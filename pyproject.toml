@@ -11,4 +11,5 @@ dependencies = [
     "langsmith[openai-agents]>=0.6.0",
     "nest-asyncio>=1.6.0",
     "openai-agents>=0.6.4",
+    "tavily-python>=0.7.17",
 ]
