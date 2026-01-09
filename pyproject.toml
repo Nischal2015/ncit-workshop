@@ -1,13 +1,14 @@
 [project]
 name = "ncit-workshop"
 version = "0.1.0"
-description = "Add your description here"
+description = "A workshop project for NCIT"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "hvac>=2.4.0",
     "langchain>=1.2.0",
     "langchain-openai>=1.1.6",
+    "langchain-qdrant>=1.1.0",
     "langgraph>=1.0.5",
     "langgraph-cli[inmem]>=0.4.11",
     "langsmith[openai-agents]>=0.6.0",
