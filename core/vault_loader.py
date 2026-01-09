@@ -21,6 +21,7 @@ def load_vault_env(
             "openai_api_key",
             "langsmith_api_key",
             "tavily_api_key",
+            "qdrant_api_key",
         ]
 
     client = hvac.Client(url=vault_url, token=token)
