@@ -317,18 +317,36 @@ raw_data = [
 ]
 
 policy_docs = [
+    # General Rule for London
     Document(
-        page_content=content,
-        metadata={"category": category, "topic": topic, "policy_id": pid},
-    )
-    for pid, category, topic, content in raw_data
+        page_content="London Per Diem Policy 2025: Meals are capped at $100 USD per person. Taxi fares are fully reimbursable up to $75 USD.",
+        metadata={"city": "London", "category": "per_diem"},
+    ),
+    # General Rule for Tokyo
+    Document(
+        page_content="Tokyo Per Diem Policy 2025: Meals are capped at $150 USD due to high cost of living. Hotels capped at $400 USD.",
+        metadata={"city": "Tokyo", "category": "per_diem"},
+    ),
+    # The Critical "VP Approval" Override (The agent must reason about this)
+    Document(
+        page_content="Global Expense Exception: If a meal exceeds the per diem limit, it is considered a VIOLATION unless the notes explicitly mention 'VP Approval' or 'Client Closing Event'.",
+        metadata={"category": "compliance_rule"},
+    ),
 ]
+
+# policy_docs = [
+#     Document(
+#         page_content=content,
+#         metadata={"category": category, "topic": topic, "policy_id": pid},
+#     )
+#     for pid, category, topic, content in raw_data
+# ]
 
 
 if __name__ == "__main__":
     # Load document into already existing Qdrant collection
     vector_store = QdrantVectorStore.from_existing_collection(
-        collection_name="ncit-workshop-simple-rag",
+        collection_name="apex_policies",
         embedding=OpenAIEmbeddings(model="text-embedding-3-small"),
         url=os.getenv("QDRANT_URL"),
         api_key=os.getenv("QDRANT_API_KEY"),
